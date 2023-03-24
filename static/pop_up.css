@@ -1,0 +1,144 @@
+.submit-prompt-btn {
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+
+  margin-right: 2rem;
+  border-radius: 5px; /* Add this line for rounded edges */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.12); /* Adjust shadow effect */
+
+}
+
+
+.submit-prompt-btn:hover,
+#generate-btn:hover {
+  filter: brightness(0.9); /* Darken buttons when hovered */
+}
+
+.submit-prompt-btn.active:hover {
+  filter: brightness(1.1); /* Darken active buttons when hovered */
+}
+
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-window {
+  width: 50%;
+  max-width: 600px;
+  background-color: white;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: relative; /* Add this line */
+}
+
+.hidden {
+  display: none;
+}
+
+.close-popup-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* drop down categories*/
+
+.category-select-btn {
+  background-color: grey;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: inline-block;
+  width: 80%;
+  text-align: center;
+}
+
+.category-dropdown {
+  position: absolute;
+  background-color: white;
+  display: none;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 1;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.category-dropdown-option {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.category-dropdown-option:hover {
+  background-color: #f1f1f1;
+}
+
+.submit-prompt-text {
+  width: 80%;
+  height: 160px;
+  margin-bottom: 20px;
+}
+
+.submit-new-prompt {
+  background-color: green;
+  color: white;
+  padding: 5px 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.new-category-input {
+  width: calc(100% - 40px);
+}
+
+.ok-button {
+  display: inline-block;
+  width: 30px;
+  margin-left: 10px;
+  text-align: center;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
