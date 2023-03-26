@@ -20,5 +20,7 @@ def generate_prompt():
 
     return jsonify({'prompt': generated_prompt})
 
+
+
 if __name__ == '__main__':
     app.run(debug=True)
