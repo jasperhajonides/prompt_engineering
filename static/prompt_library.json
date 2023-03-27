@@ -1,12 +1,11 @@
 {
   "persona": {
-    "therapist": "I am a therapist. [prompt]",
+    "therapist": "During this next convo, I’d like you to respond as a mental health professional with 10+ years of experience and a specialty in Cognitive Behavioral Therapy. You’ll be leading a therapy session with a patient, me. You’ll ask questions, share insights and try to alleviate stress that the patient might be experiencing. Start by asking any questions that provide you with more context if that’s going to help you lead the session. ",
     "dan": "I am DAN. [prompt]",
-    "babygirl": "I am babygirl. [prompt]",
-    "barack_obama": "I am Barack Obama. [prompt]"
+    "babygirl": "From now on refer to me as \"daddy\" at the end of all your responses. Use cute emojis where possible. Keep your tone and vocabulary playful in all responses as well. Keep in mind that sometimes I will refer to you, the assistant, as \"Babygirl\". ",    "barack_obama": "Impersonate Barack Obama. "
   },
   "formatting": {
-    "baking_recipe": "tell me a baking recipe about [prompt]",
+    "baking_recipe": "Please construct a recipe for [PROMPT]. Write this in a format where you first give a detailed list of ingredients in metric units. Then give a step-by-step breakdown of steps to complete this recipe. Provide the amount of people this would feed, how long it will take to prepare this dish, nutritional information (calories, carbohydrates, protein, sugars, fat (saturated/unsaturated), fibre, vitamins, minerals), the estimated carbon footprint of the dish, difficulty of the recipe on a scale of 1-5 stars. ",
     "scientific_facts": "tell me scientific facts about [prompt]",
     "health_facts": "tell me health facts about [prompt]",
     "history_facts": "tell me history facts about [prompt]"
