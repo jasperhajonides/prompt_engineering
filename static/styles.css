@@ -40,6 +40,8 @@ body {
   text-align: center;
   padding-top: 30px;
   padding-bottom: 25px;
+    font-family: 'Quicksand', sans-serif;
+
 }
 
 .header h1 {
@@ -51,25 +53,14 @@ main {
     text-align: center;
 }
 
-/*
-.buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+
+.context-btn:hover .dropdown {
+  display: block;
 }
 
-.context-btn {
-    border: 1px solid #ccc;
-    background-color: #ccc;
-    color: #333;
-    padding: 0.5rem 1rem;
-    margin: 0 0.25rem;
-    cursor: pointer;
-}
-*/
 
 
-.button-container {
+#button-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -79,9 +70,10 @@ main {
   justify-content: center; /* Add this line to center the buttons horizontally */
   margin: auto; /* Add this line to center the container */
   padding: 10px;
-
-
+  font-family: 'Quicksand', sans-serif;
 }
+
+
 
 .context-btn {
   flex: 1;
@@ -94,9 +86,38 @@ main {
   border-radius: 5px; /* Add this line for rounded edges */
   font-family: "Calibri", sans-serif; /* Add this line for custom font */
   font-size: 16px;
+  display: inline-block;
+  position: relative;
 
 }
 
+
+/* Add custom colors for the buttons */
+.context-btn:nth-child(1).active {
+  background-color: green;
+}
+
+.context-btn:nth-child(2).active {
+  background-color: lightgreen;
+}
+
+.context-btn:nth-child(3).active {
+  background-color: #4B5320; /* moss green */
+}
+
+.context-btn:nth-child(4).active {
+  background-color: #90EE90; /* very light green */
+}
+
+.context-btn:nth-child(5).active {
+  background-color: lightgrey;
+}
+
+.context-btn:nth-child(6).active {
+  background-color: grey;
+}
+
+/* old
 .context-btn[data-type="persona"]:active,
 .context-btn[data-type="persona"].active {
   background-color: #45645D;
@@ -115,7 +136,7 @@ main {
 .context-btn[data-type="style"]:active,
 .context-btn[data-type="style"].active {
   background-color: #7d9c91;
-}
+} */
 
 
 .dropdown {
@@ -135,6 +156,10 @@ main {
 
 }
 
+.dropdown-option:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .dropdown-option {
   padding: 8px 12px;
   cursor: pointer;
@@ -145,13 +170,11 @@ main {
   position: absolute;
   opacity: 0;
   cursor: pointer;
+  display: none;
+
 }
 
-.dropdown-option input[type='radio'] {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
+
 
 .dropdown-option label {
   cursor: pointer;
@@ -234,6 +257,10 @@ main {
     border: none;
     cursor: pointer;
     font-size: 16px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600; /* add this line */
+
+}
 }
 
 .output {
