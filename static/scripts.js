@@ -84,44 +84,58 @@ async function loadJsonData() {
 
 function createButtons(jsonData) {
   const buttonContainer = document.getElementById("button-container");
-  buttonContainer.style.width = '600px';
+  buttonContainer.style.width = "600px";
 
-  const buttonColors = ['green', 'lightgreen', 'mossgreen', 'verylightgreen', 'lightgrey', 'grey'];
+  const buttonColors = [
+    "green",
+    "lightgreen",
+    "mossgreen",
+    "verylightgreen",
+    "lightgrey",
+    "grey",
+  ];
   let buttonIndex = 0;
 
-  for (const key in jsonData) {
+  const buttonMapping = {};
+
+  jsonData.data.forEach((obj) => {
+    const buttonName = `${obj.topic}-${obj.subtopic}`;
+    if (!buttonMapping.hasOwnProperty(buttonName)) {
+      buttonMapping[buttonName] = obj;
+    }
+  });
+
+  for (const key in buttonMapping) {
     const button = document.createElement("button");
-    button.textContent = key;
+    button.textContent = buttonMapping[key].subtopic;
     button.classList.add("context-btn");
     button.dataset.type = key;
-    button.style.width = 'calc(50% - 10px)';
+    button.style.width = "calc(50% - 10px)";
     buttonContainer.appendChild(button);
 
-    const dropdown = document.createElement('div');
-    dropdown.classList.add('dropdown');
+    const dropdown = document.createElement("div");
+    dropdown.classList.add("dropdown");
     dropdown.id = `${key}-dropdown`;
     buttonContainer.appendChild(dropdown);
 
-    for (const option in jsonData[key]) {
-      const item = document.createElement("div");
-      item.classList.add("dropdown-option");
-      dropdown.appendChild(item);
+    const item = document.createElement("div");
+    item.classList.add("dropdown-option");
+    dropdown.appendChild(item);
 
-      const input = document.createElement("input");
-      input.type = "radio";
-      input.name = key;
-      input.id = `${key}-${option}`;
-      input.style.display = "none";
-      item.appendChild(input);
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = key;
+    input.id = `${key}-${buttonMapping[key].subtopic}`;
+    input.style.display = "none";
+    item.appendChild(input);
 
-      const label = document.createElement("label");
-      label.setAttribute("for", `${key}-${option}`);
-      label.textContent = option;
-      item.appendChild(label);
-    }
+    const label = document.createElement("label");
+    label.setAttribute("for", `${key}-${buttonMapping[key].subtopic}`);
+    label.textContent = buttonMapping[key].subtopic;
+    item.appendChild(label);
 
-    button.addEventListener('change', (event) => {
-      if (event.target.tagName === 'INPUT') {
+    button.addEventListener("change", (event) => {
+      if (event.target.tagName === "INPUT") {
         button.textContent = event.target.nextElementSibling.textContent;
         button.style.backgroundColor = buttonColors[buttonIndex];
       }
@@ -228,8 +242,10 @@ function generateOutput(jsonData) {
 
     if (selectedOption) {
       // Access the selected option's text correctly
-      output += " " + jsonData[buttonType][selectedOption].message;
-    }
+        const message = jsonData.data.find(
+          (obj) => obj.topic === buttonType && obj.subtopic === selectedOption
+        ).message;
+        output += " " + message;    }
 
   });
 

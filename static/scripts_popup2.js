@@ -24,32 +24,32 @@ document.addEventListener("DOMContentLoaded", function () {
     topicDropdown.classList.toggle("hidden");
   });
 
-  async function loadTopicOptions() {
-    try {
-      const response = await fetch("http://localhost:3000/data");
-      const data = await response.json();
-      const keys = Object.keys(data);
+async function loadTopicOptions() {
+  try {
+    const response = await fetch("http://localhost:3000/data");
+    const data = await response.json();
+    const uniqueTopics = [...new Set(data.map(item => item.topic))];
 
-      keys.forEach((key) => {
-        const option = document.createElement("a");
-        option.href = "#";
-        option.textContent = key;
-        option.classList.add("topicOption");
-        topicDropdown.appendChild(option);
+    uniqueTopics.forEach((topic) => {
+      const option = document.createElement("a");
+      option.href = "#";
+      option.textContent = topic;
+      option.classList.add("topicOption");
+      topicDropdown.appendChild(option);
+    });
+
+    Array.from(topicOptions).forEach((option) => {
+      option.addEventListener("click", (event) => {
+        event.preventDefault();
+        selectTopicButton.textContent = event.target.textContent;
+        topicDropdown.classList.add("hidden");
       });
+    });
 
-      Array.from(topicOptions).forEach((option) => {
-        option.addEventListener("click", (event) => {
-          event.preventDefault();
-          selectTopicButton.textContent = event.target.textContent;
-          topicDropdown.classList.add("hidden");
-        });
-      });
-
-    } catch (error) {
-      console.error("Failed to fetch topics:", error);
-    }
+  } catch (error) {
+    console.error("Failed to fetch topics:", error);
   }
+}
 
   const submitBtn = document.getElementById("submitBtn");
   const subtopicInput = document.getElementById("subtopicInput");
@@ -60,6 +60,9 @@ submitBtn.addEventListener("click", function () {
   const subtopic = subtopicInput.value.trim();
   const message = promptInput.value.trim();
    console.log(topic)
+   console.log(subtopic)
+   console.log(message)
+
   if (
     topic &&
     topic !== "Select Topic" &&
@@ -108,12 +111,12 @@ async function loadTopicOptions() {
 /* add new data */
 async function submitData(topic, subtopic, message) {
   try {
-    const response = await fetch(`http://localhost:3000/data/${topic}/${subtopic}`, {
-      method: "PATCH",
+    const response = await fetch("http://localhost:3000/data", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ topic, subtopic, message }),
     });
 
     if (response.ok) {
