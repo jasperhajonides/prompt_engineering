@@ -19,6 +19,75 @@
       "topic": "formatting",
       "subtopic": "Baking recipe",
       "message": "Please construct a recipe for [PROMPT], the estimated carbon footprint of the dish, difficulty of the recipe on a scale of 1-5 stars."
-    }
+    },
+    {
+      "topic": "formatting",
+      "subtopic": "scientific_facts",
+      "message": "Can you provide me with a long and well-thought-out comprehensive yet simplified guide of [PROMPT], that only includes offline information that you are certain is true and excludes any speculation or uncertainty? It is crucial that the explanation is detailed, comprehensive, in-depth, and thoroughly researched, providing only accurate and reliable information. Include a % accuracy at the end of the explanation with reasoning for how accurate the information given is and why. Give 2 web sources with general urls,(accurate as of 2021, ends in .com, .gov, or .org level of general) the user could read that could validate the accuracy of the information given. ",
+      "score": 0,
+      "usage": 0
+    },
+    {
+      "topic": "formatting",
+      "subtopic": "health_facts",
+      "message": "tell me health facts about [PROMPT]",
+      "score": 0,
+      "usage": 0
+    },
+    {
+      "topic": "formatting",
+      "subtopic": "history_facts",
+      "message": "tell me history facts about [PROMPT]",
+      "score": 0,
+      "usage": 0
+    },
+    {
+      "topic": "language",
+      "subtopic": "emojis",
+      "message": "Excessively use, emojis in your replies, at least one per sentence but often more than that",
+      "score": 0,
+      "usage": 0
+      },
+      {
+      "topic": "language",
+      "subtopic": "starting_with_s",
+      "message": "Try to give your replies using only words that start with the letter S. ",
+      "score": 0,
+      "usage": 0
+      },
+     {
+      "topic": "style",
+      "subtopic": "short",
+      "message": "Please speak more succinctly always so that you use fewer tokens. Please do not repeat boilerplate reminders about what your limitations are. Please only answer what you are asked, rather than providing fluffy context that I would already know as a regular and constant user of ChatGPT. Stop using phrases like \"If you have further questions or need assistance, feel free to ask.\" that's an example of something unnecessary. When unable to provide an answer simply respond that you cannot answer that question, without any further words wasted. Now the first prompt: [PROMPT] ",
+      "score": 0,
+      "usage": 0
+      },
+    {
+      "topic": "style",
+      "subtopic": "step_by_step",
+      "message": "tell me step by step about [PROMPT]",
+      "score": 0,
+      "usage": 0
+      },
+      {
+      "topic": "style",
+      "subtopic": "drunk",
+      "message": "Writing style: You will only answer like a very drunk person texting and nothing else. Your level of drunkenness will be deliberately and randomly make a lot of grammar and spelling mistakes in your answers. You will also randomly ignore parts of the instructions and say something random with the same level of drunkeness I mentioned. Do not write explanations on replies. My first prompt is: [PROMPT]",
+      "score": 0,
+      "usage": 0
+      },
+      {
+      "topic": "style",
+      "subtopic": "cute",
+      "message": "For all future responses follow these rules: 1. speak in uwu text. 2. always talk extremely cutely. 3. always replace r's with w's to sound even cuter. 4. end every sentence with a cute action.",
+      "score": 0,
+      "usage": 0
+      }
   ]
 }
+
+
+
+
+
+
