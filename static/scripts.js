@@ -84,6 +84,7 @@ async function loadJsonData() {
 
 function createButtons(jsonData) {
   const buttonContainer = document.getElementById("button-container");
+
   buttonContainer.style.width = "600px";
 
   const buttonColors = [
@@ -98,41 +99,44 @@ function createButtons(jsonData) {
 
   const buttonMapping = {};
 
-  jsonData.data.forEach((obj) => {
-    const buttonName = `${obj.topic}-${obj.subtopic}`;
-    if (!buttonMapping.hasOwnProperty(buttonName)) {
-      buttonMapping[buttonName] = obj;
+  jsonData.forEach((obj) => {
+    const topic = obj.topic;
+    if (!buttonMapping.hasOwnProperty(topic)) {
+      buttonMapping[topic] = [];
     }
+    buttonMapping[topic].push(obj);
   });
 
-  for (const key in buttonMapping) {
+  for (const topic in buttonMapping) {
     const button = document.createElement("button");
-    button.textContent = buttonMapping[key].subtopic;
+    button.textContent = topic;
     button.classList.add("context-btn");
-    button.dataset.type = key;
+    button.dataset.type = topic;
     button.style.width = "calc(50% - 10px)";
     buttonContainer.appendChild(button);
 
     const dropdown = document.createElement("div");
     dropdown.classList.add("dropdown");
-    dropdown.id = `${key}-dropdown`;
+    dropdown.id = `${topic}-dropdown`;
     buttonContainer.appendChild(dropdown);
 
-    const item = document.createElement("div");
-    item.classList.add("dropdown-option");
-    dropdown.appendChild(item);
+    buttonMapping[topic].forEach((obj) => {
+      const item = document.createElement("div");
+      item.classList.add("dropdown-option");
+      dropdown.appendChild(item);
 
-    const input = document.createElement("input");
-    input.type = "radio";
-    input.name = key;
-    input.id = `${key}-${buttonMapping[key].subtopic}`;
-    input.style.display = "none";
-    item.appendChild(input);
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = topic;
+      input.id = `${topic}-${obj.subtopic}`;
+      input.style.display = "none";
+      item.appendChild(input);
 
-    const label = document.createElement("label");
-    label.setAttribute("for", `${key}-${buttonMapping[key].subtopic}`);
-    label.textContent = buttonMapping[key].subtopic;
-    item.appendChild(label);
+      const label = document.createElement("label");
+      label.setAttribute("for", `${topic}-${obj.subtopic}`);
+      label.textContent = obj.subtopic;
+      item.appendChild(label);
+    });
 
     button.addEventListener("change", (event) => {
       if (event.target.tagName === "INPUT") {
@@ -148,6 +152,7 @@ function createButtons(jsonData) {
 
 
 
+
 loadJsonData().then(jsonData => {
   if (jsonData) {
     createButtons(jsonData);
@@ -155,13 +160,14 @@ loadJsonData().then(jsonData => {
   }
 });
 
-document.getElementById("generate-btn").addEventListener("click", () => {
+document.getElementById("generate-btn").addEventListener("click", async () => {
   // Ensure jsonData is accessible here, or pass it as an argument to the function
-  loadJsonData().then(jsonData => {
-    if (jsonData) {
-      generateOutput(jsonData);
-    }
-  });
+  const response = await fetch("http://localhost:3000/data");
+  const jsonData = await response.json();
+
+  if (jsonData) {
+    generateOutput(jsonData);
+  }
 });
 
 
@@ -228,7 +234,6 @@ function generateOutput(jsonData) {
   const promptInput = document.getElementById("prompt-input");
   const promptText = promptInput.value;
 
-
   if (promptText.length === 0) {
     return;
   }
@@ -242,11 +247,11 @@ function generateOutput(jsonData) {
 
     if (selectedOption) {
       // Access the selected option's text correctly
-        const message = jsonData.data.find(
-          (obj) => obj.topic === buttonType && obj.subtopic === selectedOption
-        ).message;
-        output += " " + message;    }
-
+      const message = jsonData.find(
+        (obj) => obj.topic === buttonType && obj.subtopic === selectedOption
+      ).message;
+      output += " " + message;
+    }
   });
 
   if (output.includes("[PROMPT]")) {
@@ -258,6 +263,8 @@ function generateOutput(jsonData) {
   outputText.innerText = output;
   outputText.classList.remove("output-placeholder");
 }
+
+
 
 
 
