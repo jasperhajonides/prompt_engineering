@@ -3,22 +3,30 @@
     {
       "topic": "persona",
       "subtopic": "therapist",
-      "message": "During this next convo, ."
+      "message": "During this next convo, .",
+      "score": 0,
+      "usage": 0
     },
     {
       "topic": "persona",
       "subtopic": "barack_obama",
-      "message": "Impersonate Barack Obama."
+      "message": "Impersonate Barack Obama.",
+      "score": 0,
+      "usage": 0
     },
     {
       "topic": "persona",
       "subtopic": "relationship_coach",
-      "message": "I want you to act as a relationship coach."
+      "message": "I want you to act as a relationship coach.",
+      "score": 0,
+      "usage": 0
     },
     {
       "topic": "formatting",
       "subtopic": "Baking recipe",
-      "message": "Please construct a recipe for [PROMPT], the estimated carbon footprint of the dish, difficulty of the recipe on a scale of 1-5 stars."
+      "message": "Please construct a recipe for [PROMPT], the estimated carbon footprint of the dish, difficulty of the recipe on a scale of 1-5 stars.",
+      "score": 0,
+      "usage": 0
     },
     {
       "topic": "formatting",
